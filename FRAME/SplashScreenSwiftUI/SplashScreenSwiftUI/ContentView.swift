@@ -33,7 +33,7 @@ struct ContentView: View {
                             .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/).shadow(color: .gray, radius: 5, x: 0, y: 8)
                         
                         
-                        NavigationLink(destination: secoundPage(), isActive: $isPresenting) { EmptyView() }
+                        NavigationLink(destination: choosingpage(), isActive: $isPresenting) { EmptyView() }
                         Button("Let's GO!") {
                             isPresenting = true
                         }
@@ -56,3 +56,4 @@ struct ContentView_Previews: PreviewProvider {
             .previewInterfaceOrientation(.portrait)
     }
 }
+

@@ -1,17 +1,13 @@
 //
-//  secoundPage.swift
+//  secoundpage(v2).swift
 //  F.R.A.M.E
 //
-//  Created by siamak on 5/11/1401 AP.
+//  Created by siamak on 1/16/1402 AP.
 //
 
 import SwiftUI
 
-func toInt(_ value: Double) -> Int {
-    return Int(Double(value.rounded(.down)))
-}
-public struct secoundPage: View {
-    
+public struct secoundpage_v2_: View {
     @State private var isShowingDetailView = false
     @State var isPresenting = false
     @State var w3Text: String = ""
@@ -176,7 +172,7 @@ public struct secoundPage: View {
 //                    isPresenting = true
 //                }.padding(.trailing, 350.0)
 //                    .font(/*@START_MENU_TOKEN@*/.body/*@END_MENU_TOKEN@*/).foregroundColor(.blue).dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-//                
+//
                 VStack {
                     List {
                         VStack(alignment: .leading) {
@@ -1975,55 +1971,9 @@ public struct secoundPage: View {
         }.background(.white)
     }
 }
-        
-//  .ignoresSafeArea().navigationBarBackButtonHidden(false).navigationBarHidden(true).listRowSeparator(.hidden)
-    
-    /*@State var isPresenting = false
-    var body: some View {
-        NavigationView { /// 2.
-            VStack { /// 3.
-                
-                ZStack {
-                    Capsule()
-                        .frame(width: 150.0, height: 60.0)
-                        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    
-                    
-                    NavigationLink(destination: firstPage(), isActive: $isPresenting) { EmptyView() }
-                    Button("Let's GO!") {
-                        isPresenting = true
-                    }
-                    .font(/*@START_MENU_TOKEN@*/.headline/*@END_MENU_TOKEN@*/).foregroundColor(.white).dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxLarge/*@END_MENU_TOKEN@*/)
-                }
-                }
-                .padding(.top, 50.0)
-                
-                
-                
-                
-            }*/
-    
-   /* @State private var isShowingDetailView = false
 
-        var body: some View {
-            NavigationView {
-                VStack {
-                    NavigationLink(destination: firstPage(), isActive: $isShowingDetailView) { EmptyView() }
-
-                    Button("Tap to calculate.") {
-                        isShowingDetailView = true
-                    }
-                }
-                
-            }*/
-        
-
-
-
-public struct secoundPage_Previews: PreviewProvider {
-    public static var previews: some View {
-        secoundPage()
+struct secoundpage_v2__Previews: PreviewProvider {
+    static var previews: some View {
+        secoundpage_v2_()
     }
 }
-
-

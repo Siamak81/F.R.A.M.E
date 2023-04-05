@@ -140,14 +140,14 @@ struct LoginPart: View {
             
             ZStack {
                 Capsule()
-                    .frame(width: 360.0, height: 60.0)
+                    .frame(width: 300, height: 40)
                     .foregroundColor(.white)
                 
                 Button("Click for more information.") {
             guard let url = URL(string: "http://www.framemethod.net/indexen.html") else { return }
                 UIApplication.shared.open(url)}
                 .foregroundColor(.blue)
-                .lineLimit(/*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).dynamicTypeSize(/*@START_MENU_TOKEN@*/.xxxLarge/*@END_MENU_TOKEN@*/)
+                .lineLimit(/*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).dynamicTypeSize(.large)
                 
             }
            
