@@ -167,12 +167,7 @@ public struct secoundpage_v1_: View {
         NavigationView {
             
             VStack {
-                NavigationLink(destination: ContentView(), isActive: $isPresenting) { EmptyView() }
-//                Button("< Back") {
-//                    isPresenting = true
-//                }.padding(.trailing, 350.0)
-//                    .font(/*@START_MENU_TOKEN@*/.body/*@END_MENU_TOKEN@*/).foregroundColor(.blue).dynamicTypeSize(/*@START_MENU_TOKEN@*/.xLarge/*@END_MENU_TOKEN@*/)
-//
+                Rectangle().frame(height: 0.0).ignoresSafeArea()
                 VStack {
                     List {
                         VStack(alignment: .leading) {

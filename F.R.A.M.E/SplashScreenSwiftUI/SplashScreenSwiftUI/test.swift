@@ -9,7 +9,18 @@ import SwiftUI
 
 struct test: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            NavigationLink("Press Me", destination: Text("Detail").navigationTitle("Detail View"))
+                .navigationBarTitleDisplayMode(.inline)
+                // this sets the Back button text when a new screen is pushed
+                .navigationTitle("Back to Primary View")
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        // this sets the screen title in the navigation bar, when the screen is visible
+                        Text("Primary View")
+                    }
+                }
+        }
     }
 }
 

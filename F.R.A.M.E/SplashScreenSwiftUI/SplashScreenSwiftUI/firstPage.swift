@@ -144,7 +144,7 @@ struct LoginPart: View {
                     .foregroundColor(.white)
                 
                 Button("Click for more information.") {
-            guard let url = URL(string: "http://www.framemethod.net/indexen.html") else { return }
+            guard let url = URL(string: "https://frame-risk-assessment.framer.ai/") else { return }
                 UIApplication.shared.open(url)}
                 .foregroundColor(.blue)
                 .lineLimit(/*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/).dynamicTypeSize(.large)
