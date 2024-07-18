@@ -1,0 +1,78 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor #A9DCDF
+  BorderColor #000000
+  FontSize 12
+  FontColor #000000
+  RoundCorner 20
+}
+
+skinparam arrow {
+  FontSize 12
+  FontColor #000000
+}
+
+title Calculation of Potential Risk (P)
+
+' Define the main Potential Risk (P) calculation
+RECTANGLE "Potential Risk (P)" {
+  +P = q * i * g * e * v * z
+}
+
+' Define the factors with descriptions
+RECTANGLE "Fire Load Factor (q)" {
+  +Description: Amount that can burn per area unit (m²). Measure for fire duration.
+}
+
+RECTANGLE "Spread Factor (i)" {
+  +Description: Ease of fire spread through a building.
+  +Calculated from: average dimension of the content (m), flame propagation class (M), and destruction temperature (T).
+}
+
+RECTANGLE "Area Factor (g)" {
+  +Description: Horizontal influence of the fire.
+  +Linked to: size and shape of the fire compartment.
+  +Calculated from: theoretical length (l) and equivalent width (b).
+}
+
+RECTANGLE "Level Factor (e)" {
+  +Description: Vertical influence of the fire.
+  +Based on: level number (E).
+}
+
+RECTANGLE "Venting Factor (v)" {
+  +Description: Influence of smoke and heat inside the building.
+  +Compares: venting capacity of the compartment with the sources of smoke.
+  +Calculated from: smoke venting factor (k), ceiling height, and mobile fire load (Qm).
+}
+
+RECTANGLE "Access Factor (z)" {
+  +Description: Difficulty for outside help to reach the fire area.
+  +Calculated from: distance between access level and fire area level, number of access directions, and compartment size.
+}
+
+' Define alternate calculations with explanations
+RECTANGLE "Alternate Calculation (P1)" {
+  +P1 = q * i * e * v * z
+  +Description: Calculation without area factor (g).
+}
+
+RECTANGLE "Alternate Calculation (P2)" {
+  +P2 = g * i * e * v * z
+  +Description: Calculation without fire load factor (q).
+}
+
+' Main calculation connections
+"P" --> "Fire Load Factor (q)" : "Includes in calculation"
+"P" --> "Spread Factor (i)" : "Includes in calculation"
+"P" --> "Area Factor (g)" : "Includes in calculation"
+"P" --> "Level Factor (e)" : "Includes in calculation"
+"P" --> "Venting Factor (v)" : "Includes in calculation"
+"P" --> "Access Factor (z)" : "Includes in calculation"
+
+' Alternate calculation connections
+"P" --> "Alternate Calculation (P1)" : "Derived without 'g'"
+"P" --> "Alternate Calculation (P2)" : "Derived without 'q'"
+
+@enduml

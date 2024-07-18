@@ -1,0 +1,65 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor #A9DCDF
+  BorderColor #000000
+  FontSize 12
+  FontColor #000000
+  RoundCorner 20
+}
+
+skinparam arrow {
+  FontSize 12
+  FontColor #000000
+}
+
+title Calculation of Acceptance Level (A)
+
+' Define the main Acceptance Level (A) calculations
+RECTANGLE "Acceptance Level (A)" {
+  +A = 1.6 - a - t - c
+}
+
+RECTANGLE "Acceptance Level (A1)" {
+  +A1 = 1.6 - a - t - r
+}
+
+RECTANGLE "Acceptance Level (A2)" {
+  +A2 = 1.6 - a - c - d
+}
+
+' Define the factors with descriptions
+RECTANGLE "Activation Factor (a)" {
+  +Description: The factor that reflects the ease of activation of fire protection systems.
+}
+
+RECTANGLE "Evacuation Time Factor (t)" {
+  +Description: The time required to evacuate people from the building.
+}
+
+RECTANGLE "Value Factor (c)" {
+  +Description: The factor related to the value of the contents and property.
+}
+
+RECTANGLE "Risk Factor (r)" {
+  +Description: The factor representing additional risk elements.
+}
+
+RECTANGLE "Damage Factor (d)" {
+  +Description: The factor accounting for potential damage during evacuation.
+}
+
+' Main calculation connections
+"Acceptance Level (A)" -down-> "Activation Factor (a)" : "Uses"
+"Acceptance Level (A)" -down-> "Evacuation Time Factor (t)" : "Uses"
+"Acceptance Level (A)" -down-> "Value Factor (c)" : "Uses"
+
+"Acceptance Level (A1)" -down-> "Activation Factor (a)" : "Uses"
+"Acceptance Level (A1)" -down-> "Evacuation Time Factor (t)" : "Uses"
+"Acceptance Level (A1)" -down-> "Risk Factor (r)" : "Uses"
+
+"Acceptance Level (A2)" -down-> "Activation Factor (a)" : "Uses"
+"Acceptance Level (A2)" -down-> "Value Factor (c)" : "Uses"
+"Acceptance Level (A2)" -down-> "Damage Factor (d)" : "Uses"
+
+@enduml

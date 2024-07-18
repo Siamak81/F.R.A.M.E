@@ -1,0 +1,83 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor #A9DCDF
+  BorderColor #000000
+  FontSize 12
+  FontColor #000000
+  RoundCorner 20
+}
+
+skinparam arrow {
+  FontSize 12
+  FontColor #000000
+}
+
+title Calculation of Potential Risk (P)
+
+' Define the main Potential Risk (P) calculations
+RECTANGLE "Potential Risk for Property (P)" {
+  +P = q * g * i * e * v * z
+}
+
+RECTANGLE "Potential Risk for Occupants (P1)" {
+  +P1 = q * i * e * v * z
+}
+
+RECTANGLE "Potential Risk for Activities (P2)" {
+  +P2 = g * i * e * v * z
+}
+
+' Define the factors with descriptions
+RECTANGLE "Fire Load Factor (q)" {
+  +Description: Amount that can burn per area unit (m²). Measure for fire duration.
+}
+
+RECTANGLE "Spread Factor (i)" {
+  +Description: Ease of fire spread through a building.
+  +Calculated from: average dimension of the content (m), flame propagation class (M), and destruction temperature (T).
+}
+
+RECTANGLE "Area Factor (g)" {
+  +Description: Horizontal influence of the fire.
+  +Linked to: size and shape of the fire compartment.
+  +Calculated from: theoretical length (l) and equivalent width (b).
+}
+
+RECTANGLE "Level Factor (e)" {
+  +Description: Vertical influence of the fire.
+  +Based on: level number (E).
+}
+
+RECTANGLE "Venting Factor (v)" {
+  +Description: Influence of smoke and heat inside the building.
+  +Compares: venting capacity of the compartment with the sources of smoke.
+  +Calculated from: smoke venting factor (k), ceiling height, and mobile fire load (Qm).
+}
+
+RECTANGLE "Access Factor (z)" {
+  +Description: Difficulty for outside help to reach the fire area.
+  +Calculated from: distance between access level and fire area level, number of access directions, and compartment size.
+}
+
+' Main calculation connections
+"Potential Risk for Property (P)" -down-> "Fire Load Factor (q)" : "Uses"
+"Potential Risk for Property (P)" -down-> "Spread Factor (i)" : "Uses"
+"Potential Risk for Property (P)" -down-> "Area Factor (g)" : "Uses"
+"Potential Risk for Property (P)" -down-> "Level Factor (e)" : "Uses"
+"Potential Risk for Property (P)" -down-> "Venting Factor (v)" : "Uses"
+"Potential Risk for Property (P)" -down-> "Access Factor (z)" : "Uses"
+
+"Potential Risk for Occupants (P1)" -down-> "Fire Load Factor (q)" : "Uses"
+"Potential Risk for Occupants (P1)" -down-> "Spread Factor (i)" : "Uses"
+"Potential Risk for Occupants (P1)" -down-> "Level Factor (e)" : "Uses"
+"Potential Risk for Occupants (P1)" -down-> "Venting Factor (v)" : "Uses"
+"Potential Risk for Occupants (P1)" -down-> "Access Factor (z)" : "Uses"
+
+"Potential Risk for Activities (P2)" -down-> "Spread Factor (i)" : "Uses"
+"Potential Risk for Activities (P2)" -down-> "Area Factor (g)" : "Uses"
+"Potential Risk for Activities (P2)" -down-> "Level Factor (e)" : "Uses"
+"Potential Risk for Activities (P2)" -down-> "Venting Factor (v)" : "Uses"
+"Potential Risk for Activities (P2)" -down-> "Access Factor (z)" : "Uses"
+
+@enduml

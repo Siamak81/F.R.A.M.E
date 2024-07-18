@@ -1,0 +1,70 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor #A9DCDF
+  BorderColor #000000
+  FontSize 12
+  FontColor #000000
+  RoundCorner 20
+}
+
+skinparam arrow {
+  FontSize 12
+  FontColor #000000
+}
+
+title Calculation of Protection Level (D)
+
+' Define the main Protection Level (D) calculation
+RECTANGLE "Protection Level (D)" {
+  +D = W * N * S * F
+}
+
+RECTANGLE "Protection Level (D1)" {
+  +D1 = N * U
+}
+
+RECTANGLE "Protection Level (D2)" {
+  +D2 = W * N * S * Y
+}
+
+' Define the factors with descriptions
+RECTANGLE "Water Supply Factor (W)" {
+  +Description: Availability and adequacy of water supply for fire fighting.
+}
+
+RECTANGLE "Normal Protection Factor (N)" {
+  +Description: Standard protection measures in place.
+}
+
+RECTANGLE "Special Protection Factor (S)" {
+  +Description: Additional special protection measures.
+}
+
+RECTANGLE "Fire Resistance Factor (F)" {
+  +Description: Fire resistance rating of the building materials and structure.
+}
+
+RECTANGLE "Utility Factor (U)" {
+  +Description: The factor representing the utility of normal protection measures.
+}
+
+RECTANGLE "Yield Factor (Y)" {
+  +Description: The factor representing the effectiveness yield of protection measures.
+}
+
+' Main calculation connections
+"Protection Level (D)" -down-> "Water Supply Factor (W)" : "Uses"
+"Protection Level (D)" -down-> "Normal Protection Factor (N)" : "Uses"
+"Protection Level (D)" -down-> "Special Protection Factor (S)" : "Uses"
+"Protection Level (D)" -down-> "Fire Resistance Factor (F)" : "Uses"
+
+"Protection Level (D1)" -down-> "Normal Protection Factor (N)" : "Uses"
+"Protection Level (D1)" -down-> "Utility Factor (U)" : "Uses"
+
+"Protection Level (D2)" -down-> "Water Supply Factor (W)" : "Uses"
+"Protection Level (D2)" -down-> "Normal Protection Factor (N)" : "Uses"
+"Protection Level (D2)" -down-> "Special Protection Factor (S)" : "Uses"
+"Protection Level (D2)" -down-> "Yield Factor (Y)" : "Uses"
+
+@enduml

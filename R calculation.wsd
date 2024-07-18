@@ -1,0 +1,93 @@
+@startuml
+!define RECTANGLE class
+skinparam rectangle {
+  BackgroundColor #A9DCDF
+  BorderColor #000000
+  FontSize 12
+  FontColor #000000
+  RoundCorner 20
+}
+
+skinparam arrow {
+  FontSize 12
+  FontColor #000000
+}
+
+title Calculation of Risk (R)
+
+' Define the main Risk (R) calculation
+RECTANGLE "Risk (R)" {
+  +R = P / (A * D)
+  +Description: Risk for property (building and content)
+}
+
+RECTANGLE "Risk (R1)" {
+  +R1 = P1 / (A1 * D1)
+  +Description: Risk for occupants (people)
+}
+
+RECTANGLE "Risk (R2)" {
+  +R2 = P2 / (A2 * D2)
+  +Description: Risk for activities
+}
+
+' Define the factors with descriptions
+RECTANGLE "Potential Risk (P)" {
+  +Description: Product of fire load factor (q), spread factor (i), area factor (g), level factor (e), venting factor (v), and access factor (z).
+  +P = q * i * g * e * v * z
+}
+
+RECTANGLE "Potential Risk (P1)" {
+  +Description: Potential Risk calculation for occupants.
+  +P1 = q * i * e * v * z
+}
+
+RECTANGLE "Potential Risk (P2)" {
+  +Description: Potential Risk calculation for activities.
+  +P2 = g * i * e * v * z
+}
+
+RECTANGLE "Acceptance Level (A)" {
+  +Description: Maximum value minus activation factor (a), evacuation time factor (t), and value factor (c).
+  +A = 1.6 - a - t - c
+}
+
+RECTANGLE "Acceptance Level (A1)" {
+  +Description: Acceptance Level for occupants.
+  +A1 = 1.6 - a - t - r
+}
+
+RECTANGLE "Acceptance Level (A2)" {
+  +Description: Acceptance Level for activities.
+  +A2 = 1.6 - a - c - d
+}
+
+RECTANGLE "Protection Level (D)" {
+  +Description: Product of water supply factor (W), normal protection factor (N), special protection factor (S), and fire resistance factor (F).
+  +D = W * N * S * F
+}
+
+RECTANGLE "Protection Level (D1)" {
+  +Description: Protection Level for occupants.
+  +D1 = N * U
+}
+
+RECTANGLE "Protection Level (D2)" {
+  +Description: Protection Level for activities.
+  +D2 = W * N * S * Y
+}
+
+' Main calculation connections
+"Risk (R)" -down-> "Potential Risk (P)" : "Uses P"
+"Risk (R)" -down-> "Acceptance Level (A)" : "Uses A"
+"Risk (R)" -down-> "Protection Level (D)" : "Uses D"
+
+"Risk (R1)" -down-> "Potential Risk (P1)" : "Uses P1"
+"Risk (R1)" -down-> "Acceptance Level (A1)" : "Uses A1"
+"Risk (R1)" -down-> "Protection Level (D1)" : "Uses D1"
+
+"Risk (R2)" -down-> "Potential Risk (P2)" : "Uses P2"
+"Risk (R2)" -down-> "Acceptance Level (A2)" : "Uses A2"
+"Risk (R2)" -down-> "Protection Level (D2)" : "Uses D2"
+
+@enduml
